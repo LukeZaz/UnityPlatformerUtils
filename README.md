@@ -5,7 +5,8 @@ Various scripts designed to make creating platformer games in Unity easier.
 
 ##Scripts
 
-There are currently two scripts in this. Both are for working with tiles. All scripts have been modified to not require any other scripts along with them.
+There are currently two scripts in this. Both are for working with tiles. There are two versions of each script, one requires the ExtraMethods.cs script in order to work,
+while the other version has no dependencies.
 
 ###TileColliderManager.cs
 
@@ -25,8 +26,15 @@ Includes options for tags of objects to handle the textures of and tile size. Sp
 sprites. Must be attached to each of the tiles it will modify the texture of. It will run one time as soon as it is created in the scene, and can be safely
 destroyed afterwards if necessary.
 
+###ExtraMethods.cs
+
+This script does nothing by itself, but rather is there in order to provide functions for other scripts to use. Currently only includes one overloaded method for
+checking if a float, integer or double is within a range.
+
 ## How to use this package
 
 In order to use these scripts in Unity, simply open your Unity project, right-click in the Project tab, select **Import Package > Custom Package...**,
  navigate to where you saved the **.unitypackage** file and double-click on it.
  The scripts will be imported from the file and you can attach them to objects in the scene from there.
+
+If you're using the dependent version of the scripts, you will need to attach a ExtraMethods script somewhere and provide them with it for them to work.

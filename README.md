@@ -24,3 +24,9 @@ sprite for each situation, as opposed to one for each possible rotation.
 Includes options for tags of objects to handle the textures of and tile size. Sprites must be provided for every possible entry, though they don't have to be different
 sprites. Must be attached to each of the tiles it will modify the texture of. It will run one time as soon as it is created in the scene, and can be safely
 destroyed afterwards if necessary.
+
+## How to use this package
+
+In order to use these scripts in Unity, simply open your Unity project, right-click in the Project tab, select **Import Package > Custom Package...**,
+ navigate to where you saved the **.unitypackage** file and double-click on it.
+ The scripts will be imported from the file and you can attach them to objects in the scene from there.

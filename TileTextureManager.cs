@@ -84,10 +84,6 @@ public class TileTextureManager : MonoBehaviour {
 	public StraightRotation straightRotation;
 	public EndRotation endRotation;
 
-	// ExtraMethods
-	// For misc, methods such as inRange
-	public ExtraMethods eMethods;
-
 	// Occupied sides
 	private bool top = false;
 	private bool bottom = false;
@@ -130,50 +126,50 @@ public class TileTextureManager : MonoBehaviour {
 
 			// When checking for neighboring tiles, searching a small range prevents both
 			// human error and rounding errors from causing problems.
-			if (eMethods.inRange (pos.x, sPos.x-0.01f, sPos.x+0.01f))
+			if (inRange (pos.x, sPos.x-0.01f, sPos.x+0.01f))
 			{
-				if (eMethods.inRange (pos.y, sPos.y-0.01f, sPos.y+0.01f))
+				if (inRange (pos.y, sPos.y-0.01f, sPos.y+0.01f))
 				{
 					topRight = true;
 					continue;
 				}
-				else if (eMethods.inRange (pos.y, sNeg.y-0.01f, sNeg.y+0.01f))
+				else if (inRange (pos.y, sNeg.y-0.01f, sNeg.y+0.01f))
 				{
 					bottomRight = true;
 					continue;
 				}
-				else if (eMethods.inRange (pos.y, selfPos.y-0.01f, selfPos.y+0.01f))
+				else if (inRange (pos.y, selfPos.y-0.01f, selfPos.y+0.01f))
 				{
 					right = true;
 					continue;
 				}
 			}
-			else if (eMethods.inRange (pos.x, sNeg.x-0.01f, sNeg.x+0.01f))
+			else if (inRange (pos.x, sNeg.x-0.01f, sNeg.x+0.01f))
 			{
-				if (eMethods.inRange (pos.y, sPos.y-0.01f, sPos.y+0.01f))
+				if (inRange (pos.y, sPos.y-0.01f, sPos.y+0.01f))
 				{
 					topLeft = true;
 					continue;
 				}
-				else if (eMethods.inRange (pos.y, sNeg.y-0.01f, sNeg.y+0.01f))
+				else if (inRange (pos.y, sNeg.y-0.01f, sNeg.y+0.01f))
 				{
 					bottomLeft = true;
 					continue;
 				}
-				else if (eMethods.inRange (pos.y, selfPos.y-0.01f, selfPos.y+0.01f))
+				else if (inRange (pos.y, selfPos.y-0.01f, selfPos.y+0.01f))
 				{
 					left = true;
 					continue;
 				}
 			}
-			else if (eMethods.inRange (pos.y, sPos.y-0.01f, sPos.y+0.01f)
-			         && eMethods.inRange (pos.x, selfPos.x-0.01f, selfPos.x+0.01f))
+			else if (inRange (pos.y, sPos.y-0.01f, sPos.y+0.01f)
+			         && inRange (pos.x, selfPos.x-0.01f, selfPos.x+0.01f))
 			{
 				top = true;
 				continue;
 			}
-			else if (eMethods.inRange (pos.y, sNeg.y-0.01f, sNeg.y+0.01f)
-			         && eMethods.inRange (pos.x, selfPos.x-0.01f, selfPos.x+0.01f))
+			else if (inRange (pos.y, sNeg.y-0.01f, sNeg.y+0.01f)
+			         && inRange (pos.x, selfPos.x-0.01f, selfPos.x+0.01f))
 				bottom = true;
 		}
 		
@@ -341,5 +337,20 @@ public class TileTextureManager : MonoBehaviour {
 		{
 			// None occupied
 		}
+	}
+	
+	public bool inRange (float num, float first, float second)
+	{
+		if (first > second)
+		{
+			if (num >= second && num <= first)
+				return true;
+		}
+		else
+		{
+			if (num >= first && num <= second)
+				return true;
+		}
+		return false;
 	}
 }

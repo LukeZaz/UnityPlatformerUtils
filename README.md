@@ -6,7 +6,7 @@ Various scripts designed to make creating platformer games in Unity easier.
 ##Scripts
 
 There are currently two scripts in this. Both are for working with tiles. There are two versions of each script, one requires the _UnityPlatformerUtils_ script in order 
-to work, while the other version has no dependencies.
+to work, while the other version has no dependencies. See the _Standalone_ branch to find the version of the scripts that do not use _UnityPlatformerUtils.cs_.
 
 ###UnityPlatformerUtils.cs
 

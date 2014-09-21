@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityPlatformerUtils;
 
 public class TileColliderManager : MonoBehaviour {
 
@@ -15,6 +14,9 @@ public class TileColliderManager : MonoBehaviour {
 	// Width of a tile
 	public float tileWidth = 1;
 	public float tileHeight = 1;
+
+	// ExtraMethods script
+	public ExtraMethods eMethods;
 
 	// Tiles to manage
 	private List<GameObject> tiles = new List<GameObject> ();
@@ -81,8 +83,8 @@ public class TileColliderManager : MonoBehaviour {
 					                             (parentPos.x+col.size.x/2)+tileWidth/2);
 
 					// Searching a small range prevents rounding errors and human error from messing things up.
-					if (Compare.inRange (pos.x, check.x - 0.01f, check.x + 0.01f)
-					    && Compare.inRange (pos.y, parentPos.y - 0.01f, parentPos.y + 0.01f))
+					if (eMethods.inRange (pos.x, check.x - 0.01f, check.x + 0.01f)
+					    && eMethods.inRange (pos.y, parentPos.y - 0.01f, parentPos.y + 0.01f))
 					{
 						// Left
 						// Make sure loop continues
@@ -98,8 +100,8 @@ public class TileColliderManager : MonoBehaviour {
 						// Break for loop
 						break;
 					}
-					else if (Compare.inRange (pos.x, check.y - 0.01f, check.y + 0.01f)
-					         && Compare.inRange (pos.y, parentPos.y - 0.01f, parentPos.y + 0.01f))
+					else if (eMethods.inRange (pos.x, check.y - 0.01f, check.y + 0.01f)
+					         && eMethods.inRange (pos.y, parentPos.y - 0.01f, parentPos.y + 0.01f))
 					{
 						// Right
 						cont = true;
@@ -145,8 +147,8 @@ public class TileColliderManager : MonoBehaviour {
 					float checkUp = ((selfPos.y+col.size.y/2)+cols[i].size.y/2);
 					float checkDown = ((selfPos.y-col.size.y/2)-cols[i].size.y/2);
 						
-					if (Compare.inRange (pos.y, checkUp-0.01f, checkUp+0.01f)
-					    && Compare.inRange (pos.x, selfPos.x-0.01f, selfPos.x+0.01f)
+					if (eMethods.inRange (pos.y, checkUp-0.01f, checkUp+0.01f)
+				    	&& eMethods.inRange (pos.x, selfPos.x-0.01f, selfPos.x+0.01f)
 				    	&& cols[i].size.x == col.size.x)
 					{
 						// Up
@@ -160,8 +162,8 @@ public class TileColliderManager : MonoBehaviour {
 						cont = true;
 						break;
 					}
-					else if (Compare.inRange (pos.y, checkDown-0.01f, checkDown+0.01f)
-					         && Compare.inRange (pos.x, selfPos.x-0.01f, selfPos.x+0.01f)
+					else if (eMethods.inRange (pos.y, checkDown-0.01f, checkDown+0.01f)
+					         && eMethods.inRange (pos.x, selfPos.x-0.01f, selfPos.x+0.01f)
 					         && cols[i].size.x == col.size.x)
 					{
 						// Down
